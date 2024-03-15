@@ -1,0 +1,48 @@
+﻿<Page x:Class="CafeDemoLeontevaPetrova.Views.Pages.ShiftsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CafeDemoLeontevaPetrova.Views.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="620" 
+      d:DesignWidth="1260"
+      Title="Страница со сменами"
+      Loaded="Page_Loaded">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+
+        <Button Name="AddShiftBtn"
+                Click="AddShiftBtn_Click"
+                HorizontalAlignment="Left"
+                Content="Сформировать"
+                ToolTip="Формирование новой смены"/>
+        <ListView Name="ShiftsLv"
+              Grid.Row="2">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Имя"
+                                DisplayMemberBinding="{Binding Employee.Name}">
+
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Дата смены"
+                                DisplayMemberBinding="{Binding Date, StringFormat={}{0:dd.MM.yyy}}">
+
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Кол-во часов"
+                                DisplayMemberBinding="{Binding HoursAmount, StringFormat={}{0} ч.}">
+
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+
+</Page>

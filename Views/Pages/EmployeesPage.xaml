@@ -1,0 +1,60 @@
+﻿<Page x:Class="CafeDemoLeontevaPetrova.Views.Pages.EmployeesPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CafeDemoLeontevaPetrova.Views.Pages"
+      mc:Ignorable="d" 
+       d:DesignHeight="620" d:DesignWidth="1260"
+      Title="Страница пользователей"
+      Loaded="Page_Loaded">
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <Button Name="AddEmployeeBtn"
+                Click="AddEmployeeBtn_Click"
+                HorizontalAlignment="Left"
+                Content="Добавить"
+                ToolTip="Добавление нового сотрудника в систему"/>
+
+        <ListView Name="EmployeesLv"
+                  Grid.Row="2">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Имя"
+                                    DisplayMemberBinding="{Binding Name}">
+
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Дата рождения"
+                                    DisplayMemberBinding="{Binding DateOfBirth, StringFormat={}{0:dd.MM.yyy}}">
+
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Должность"
+                                    DisplayMemberBinding="{Binding Role.Name}">
+
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Статус работника">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <ComboBox Name="EmployeeStatusCmb"
+                                          Width="140"
+                                          DisplayMemberPath="Name"
+                                          SelectedValuePath="Id"
+                                          Initialized="EmployeeStatusCmb_Initialized"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+
+</Page>
